@@ -16,8 +16,14 @@ repositories {
 }
 
 dependencies {
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+    runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.20'
+    runtimeOnly group: 'org.aspectj', name: 'aspectjrt', version: '1.9.20'
 }
 
 tasks.named('test') {
