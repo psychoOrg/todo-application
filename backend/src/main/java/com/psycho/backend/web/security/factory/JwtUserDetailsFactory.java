@@ -8,6 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class JwtUserDetailsFactory {
     public static JwtUserDetails build(final User user) {
-        return new JwtUserDetails();
+        return new JwtUserDetails(
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getIsAccountNonExpired(),
+                user.getIsAccountNonLocked(),
+                user.getIsCredentialsNonExpired(),
+                user.getIsEnabled());
     }
 }
