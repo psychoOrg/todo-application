@@ -26,5 +26,9 @@ public class User {
     private Boolean isCredentialsNonExpired;
     private Boolean isEnabled;
 
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "users_roles")
+    @Enumerated(value = EnumType.STRING)
     private Set<Role> roles;
 }
