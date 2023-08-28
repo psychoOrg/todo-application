@@ -17,6 +17,8 @@ repositories {
 
 dependencies {
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.28'
+
     implementation group: 'org.yaml', name: 'snakeyaml', version: '2.1'
     implementation group: 'jakarta.validation', name: 'jakarta.validation-api', version: '3.0.2'
 
