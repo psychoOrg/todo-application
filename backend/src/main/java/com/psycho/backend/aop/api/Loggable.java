@@ -1,4 +1,9 @@
 package com.psycho.backend.aop.api;
 
-public class Loggable {
+import java.lang.annotation.*;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Loggable {
 }
