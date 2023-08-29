@@ -11,15 +11,14 @@ import com.psycho.backend.web.security.dto.JwtRequestDto;
 import com.psycho.backend.web.security.dto.JwtResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-import java.util.logging.LogManager;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
@@ -47,6 +46,7 @@ public class AuthServiceImpl implements AuthService {
 
 //        user.setCreatedAt(LocalDateTime.now());
 
+        log.info("Registered user with [{}] username", user.getUsername());
         return userRepository.save(user);
     }
 
@@ -64,6 +64,7 @@ public class AuthServiceImpl implements AuthService {
         jwtResponseDto.setId(user.getId());
         jwtResponseDto.setUsername(user.getUsername());
         jwtResponseDto.setAccessToken(jwtTokenProvider.generateAccessToken(user));
+        log.info("Login user with [{}] username", user.getUsername());
         return jwtResponseDto;
     }
 }
