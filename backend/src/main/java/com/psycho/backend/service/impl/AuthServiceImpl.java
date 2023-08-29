@@ -51,6 +51,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    @Loggable
     public JwtResponseDto login(JwtRequestDto jwtRequestDto) {
         JwtResponseDto jwtResponseDto = new JwtResponseDto();
         authenticationManager.authenticate(
