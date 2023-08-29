@@ -72,6 +72,12 @@ public class AuthRestControllerIntegrationTest {
                                 "    \"password\": \"321\"\n" +
                                 "}")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isUnauthorized());
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
+    @Test
+    public void testSuccessAccessForSecuredEndpoints() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/users/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
