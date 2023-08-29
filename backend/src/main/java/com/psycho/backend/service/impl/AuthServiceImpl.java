@@ -31,7 +31,6 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Loggable
     public User register(User user) {
-
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new ResourceMappingException(String.format("User [%s] already exist", user.getUsername()));
         }
@@ -47,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
 
 //        user.setCreatedAt(LocalDateTime.now());
 
-        return userService.create(user);
+        return userRepository.save(user);
     }
 
     @Override
