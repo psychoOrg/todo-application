@@ -2,3 +2,12 @@ spring:
   security:
     secret: 0LLQv9GA0YDQudGE0YjQsDI4Mzkw0LU90L7Qv9GC0YzRi9Cz0YjRhDDQv9GCM9C5NC050L7Qszg50YTRi9Cy0LAt0YU=
     lifetime: 10
+
+  jpa:
+    database: postgresql
+    show-sql: true
+
+  datasource:
+    username: postgres
+    password: 10072003
+    url: jdbc:postgresql://localhost:5432/todo-application

@@ -21,9 +21,13 @@ public class User {
     private String email;
     private String phone;
 
+    @Column(name = "account_non_expired")
     private Boolean isAccountNonExpired;
+    @Column(name = "non_locked")
     private Boolean isAccountNonLocked;
+    @Column(name = "credentials_non_expired")
     private Boolean isCredentialsNonExpired;
+    @Column(name = "is_enabled")
     private Boolean isEnabled;
 
     @Column(name = "role")

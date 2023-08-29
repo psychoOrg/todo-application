@@ -32,7 +32,7 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(jwtProperty.getSecret().getBytes());
     }
 
-    private String generateAccessToken(final User user) {
+    public String generateAccessToken(final User user) {
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put("id", user.getId());
 
@@ -46,7 +46,7 @@ public class JwtTokenProvider {
                 .toString();
     }
 
-    private String extractUsername(final String accessToken) {
+    public String extractUsername(final String accessToken) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
@@ -55,7 +55,7 @@ public class JwtTokenProvider {
                 .toString();
     }
 
-    private String extractUserId(final String accessToken) {
+    public String extractUserId(final String accessToken) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
