@@ -41,14 +41,16 @@ public class AuthRestControllerIntegrationTest {
     @Test
     public void testSuccessRegisterEndpoint() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/register")
-                        .content("{\n" +
-                                "    \"username\": \"abc\",\n" +
-                                "    \"password\": \"123\",\n" +
-                                "    \"firstname\": \"firstname\",\n" +
-                                "    \"lastname\": \"lastname\",\n" +
-                                "    \"email\": \"moseyarthas@gmail.com\",\n" +
-                                "    \"phone\": \"+375333840226\"\n" +
-                                "}")
+                        .content("""
+                                {
+                                    "username": "abc",
+                                    "password": "123",
+                                    "firstname": "firstname",
+                                    "lastname": "lastname",
+                                    "email": "moseyarthas@gmail.com",
+                                    "phone": "+375333840226"
+                                }
+                                """)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
@@ -56,10 +58,12 @@ public class AuthRestControllerIntegrationTest {
     @Test
     public void testSuccessLoginEndpoint() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/login")
-                        .content("{\n" +
-                                "    \"username\": \"abc\",\n" +
-                                "    \"password\": \"123\"\n" +
-                                "}")
+                        .content("""
+                                {
+                                    "username": "abc",
+                                    "password": "123"
+                                }
+                                """)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
@@ -67,10 +71,12 @@ public class AuthRestControllerIntegrationTest {
     @Test
     public void testLoginWithWrongPassword() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/login")
-                        .content("{\n" +
-                                "    \"username\": \"abc\",\n" +
-                                "    \"password\": \"321\"\n" +
-                                "}")
+                        .content("""
+                                {
+                                    "username": "abc",
+                                    "password": "321"
+                                }
+                                """)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
