@@ -23,3 +23,14 @@ logging:
   file:
     name: app.log
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /management
+  endpoint:
+    health:
+      show-details: always
+
+

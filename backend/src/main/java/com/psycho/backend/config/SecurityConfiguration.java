@@ -72,7 +72,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(configurer ->
                         configurer.requestMatchers("/api/v1/auth/**")
                                 .permitAll()
-                                .requestMatchers("/actuator/**")
+                                .requestMatchers("/management/**")
                                 .permitAll()
                                 .anyRequest().authenticated())
                 .anonymous(AbstractHttpConfigurer::disable)
