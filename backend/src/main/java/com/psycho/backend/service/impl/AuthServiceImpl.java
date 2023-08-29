@@ -1,6 +1,5 @@
 package com.psycho.backend.service.impl;
 
-import com.psycho.backend.aop.api.Loggable;
 import com.psycho.backend.data.exception.ResourceMappingException;
 import com.psycho.backend.domain.user.Role;
 import com.psycho.backend.domain.user.User;
@@ -11,6 +10,7 @@ import com.psycho.backend.web.security.JwtTokenProvider;
 import com.psycho.backend.web.security.dto.JwtRequestDto;
 import com.psycho.backend.web.security.dto.JwtResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
@@ -29,7 +30,6 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    @Loggable
     public User register(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new ResourceMappingException(String.format("User [%s] already exist", user.getUsername()));
@@ -46,11 +46,11 @@ public class AuthServiceImpl implements AuthService {
 
 //        user.setCreatedAt(LocalDateTime.now());
 
-        return userRepository.save(user);
+        log.info("Registered user with [{}] username", user.getUsername());
+        return userService.create(user);
     }
 
     @Override
-    @Loggable
     public JwtResponseDto login(JwtRequestDto jwtRequestDto) {
         JwtResponseDto jwtResponseDto = new JwtResponseDto();
         authenticationManager.authenticate(
@@ -64,6 +64,7 @@ public class AuthServiceImpl implements AuthService {
         jwtResponseDto.setId(user.getId());
         jwtResponseDto.setUsername(user.getUsername());
         jwtResponseDto.setAccessToken(jwtTokenProvider.generateAccessToken(user));
+        log.info("Login user with [{}] username", user.getUsername());
         return jwtResponseDto;
     }
 }
