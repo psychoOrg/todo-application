@@ -11,3 +11,11 @@ spring:
     username: postgres
     password: 10072003
     url: jdbc:postgresql://localhost:5432/todo-application
+
+  main:
+    banner-mode: console
+
+logging:
+  file:
+    name: app.log
+
