@@ -63,7 +63,7 @@ public class AuthServiceImpl implements AuthService {
         User user = userService.getByUsername(jwtRequestDto.getUsername());
         jwtResponseDto.setId(user.getId());
         jwtResponseDto.setUsername(user.getUsername());
-        jwtResponseDto.setAccessToken(jwtTokenProvider.generateAccessToken());
+        jwtResponseDto.setAccessToken(jwtTokenProvider.generateAccessToken(user));
         return jwtResponseDto;
     }
 }
