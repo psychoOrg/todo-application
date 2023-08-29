@@ -8,10 +8,9 @@ import com.psycho.backend.service.api.AuthService;
 import com.psycho.backend.web.security.dto.JwtRequestDto;
 import com.psycho.backend.web.security.dto.JwtResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,10 +20,14 @@ public class AuthController {
     private final AuthService authService;
     private final UserMapper userMapper;
 
+    @PostMapping(value = "/register")
+    @ResponseStatus(HttpStatus.OK)
     public User register(@RequestBody @Validated(OnCreate.class) UserDto userDto) {
         return authService.register(userMapper.toEntity(userDto));
     }
 
+    @PostMapping(value = "/login")
+    @ResponseStatus(HttpStatus.OK)
     public JwtResponseDto login(@RequestBody @Validated JwtRequestDto jwtRequestDto) {
         return authService.login(jwtRequestDto);
     }
