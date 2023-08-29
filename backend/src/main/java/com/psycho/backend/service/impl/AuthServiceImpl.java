@@ -47,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
 //        user.setCreatedAt(LocalDateTime.now());
 
         log.info("Registered user with [{}] username", user.getUsername());
-        return userRepository.save(user);
+        return userService.create(user);
     }
 
     @Override

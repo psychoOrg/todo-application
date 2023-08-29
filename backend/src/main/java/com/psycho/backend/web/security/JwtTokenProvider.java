@@ -1,7 +1,6 @@
 package com.psycho.backend.web.security;
 
 import com.psycho.backend.domain.user.User;
-import com.psycho.backend.service.api.UserService;
 import com.psycho.backend.service.props.JwtProperty;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
@@ -16,9 +15,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
-import java.util.Date;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 @Component
 @RequiredArgsConstructor
