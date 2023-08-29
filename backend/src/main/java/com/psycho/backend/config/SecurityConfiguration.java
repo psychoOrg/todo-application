@@ -72,6 +72,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(configurer ->
                         configurer.requestMatchers("/api/v1/auth/**")
                                 .permitAll()
+                                .requestMatchers("/actuator/**")
+                                .permitAll()
                                 .anyRequest().authenticated())
                 .anonymous(AbstractHttpConfigurer::disable)
                 .addFilterBefore(new JwtTokenFilter(jwtTokenProvider),
