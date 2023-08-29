@@ -11,3 +11,7 @@ spring:
     username: postgres
     password: 10072003
     url: jdbc:postgresql://localhost:5432/todo-application
+
+  liquibase:
+    drop-first: true
+    enabled: true

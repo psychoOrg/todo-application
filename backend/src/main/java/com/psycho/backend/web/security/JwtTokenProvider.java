@@ -43,7 +43,7 @@ public class JwtTokenProvider {
                 .setClaims(claims)
                 .setExpiration(Date.from(instant))
                 .signWith(key)
-                .toString();
+                .compact();
     }
 
     public String extractUsername(final String accessToken) {
