@@ -12,11 +12,10 @@ spring:
     password: 10072003
     url: jdbc:postgresql://localhost:5432/todo-application
 
-<<<<<<< HEAD
   liquibase:
     drop-first: true
     enabled: true
-=======
+
   main:
     banner-mode: console
 
@@ -24,4 +23,3 @@ logging:
   file:
     name: app.log
 
->>>>>>> feature/yaml-props-config
